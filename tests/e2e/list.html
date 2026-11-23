@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>SRIKANDI</title>
+<style>
+body{margin:0;font:13px "Segoe UI",Arial,sans-serif;background:#f3f5f7;color:#344}
+.side{position:fixed;left:0;top:0;bottom:0;width:230px;background:#fff;border-right:1px solid #e4e8ec;padding:18px 16px}
+.side b{color:#c0392b;font-size:18px;letter-spacing:1px}.side .u{margin:18px 0;font-size:12px;color:#556}
+.side a{display:block;padding:8px 10px;border-radius:8px;color:#334;text-decoration:none;margin:2px 0}.side a.on{background:#e8f3ff;color:#1565c0;font-weight:600}
+.main{margin-left:250px;padding:22px 26px}
+.card{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+h2{margin:0 0 12px;font-size:16px}.btns{float:right}.btns span{display:inline-block;margin-left:8px;padding:8px 12px;border-radius:8px;color:#fff;font-size:11px;font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:14px}th,td{border-bottom:1px solid #eef1f4;padding:9px 6px;text-align:left}th{color:#667;font-size:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;color:#fff;background:#7a8ca5}
+</style></head><body>
+<div class="side"><b>SRIKANDI</b><div class="u">Pejabat Contoh, S.T.<br>Kepala Pusat Contoh<br><i>(halaman tiruan untuk uji)</i></div>
+<a>Beranda</a><a>Naskah Masuk</a><a class="on">Tandatangan Naskah</a><a>Verifikasi Naskah</a><a>Klasifikasi Arsip</a></div>
+<div class="main"><div class="card"><div class="btns"><span style="background:#2196f3">PILIH NASKAH UNTUK DITANDATANGANI</span><span style="background:#6abf3a">PILIH NASKAH UNTUK DIKIRIM</span></div>
+<h2>Daftar Tandatangan Naskah</h2><table><thead><tr><th>No</th><th>Tanggal</th><th>Nomor</th><th>Hal</th><th>Status Penandatangan</th></tr></thead><tbody id="tb"></tbody></table></div></div>
+<script>
+function muat(token){
+  const x=new XMLHttpRequest();
+  x.open('GET','https://api.arsip.go.id/naskah-keluar/api/penandatangan-naskah/list?cursor=&rows=10&sortField=&sortOrder=&filters%5Btanggal%5D%5Bvalue%5D=&filters%5Buser_session_id%5D%5Bvalue%5D=5&filters%5Bhal%5D%5Bvalue%5D=&filters%5Bstatus_tt%5D%5Bvalue%5D=');
+  x.setRequestHeader('Authorization',token||'Bearer SESI-UJI-ANTRI');
+  x.onload=()=>{try{const r=JSON.parse(x.responseText).result.data;document.getElementById('tb').innerHTML=r.slice(0,10).map((n,i)=>'<tr><td>'+(i+1)+'</td><td>'+n.tanggal+'</td><td>'+(n.nomor||'-')+'</td><td>'+n.hal+'</td><td><span class="tag">'+(n.is_signed?'SUDAH':'BELUM')+'</span></td></tr>').join('')}catch(e){}};
+  x.send();
+}
+muat();
+</script></body></html>

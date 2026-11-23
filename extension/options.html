@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANTRI RAMA: Pengaturan dan Log</title>
+<link rel="icon" href="icons/icon32.png">
+<style>
+:root{--bg:#f6faf9;--card:#fff;--line:#cfe5e2;--ink:#10302e;--muted:#4b6663;--teal:#047D78}
+:root[data-theme=dark]{--bg:#0b1a19;--card:#102524;--line:#24504c;--ink:#e6f4f2;--muted:#9fc3be;--teal:#00B9AD}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 18px 48px}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.top img{width:44px;height:44px}
+.top h1{margin:0;font-size:24px;flex:1}
+h2{background:#FFD21F;color:#111;display:inline-block;padding:4px 12px;border-radius:8px;font-size:16px;margin:28px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+label{display:block;margin:10px 0 4px;font-weight:600;font-size:14px}
+select{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;min-width:260px}
+button{border:0;border-radius:9px;padding:9px 14px;font-weight:700;cursor:pointer;font-size:14px;background:var(--teal);color:#fff}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button.danger{background:#B42318}
+button:focus-visible,select:focus-visible{outline:3px solid #FFD21F;outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.muted{color:var(--muted);font-size:13.5px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--card)}
+.scroll{max-height:460px;overflow:auto;margin-top:10px;border:1px solid var(--line);border-radius:10px}
+.ok{color:var(--teal);font-weight:700}.bad{color:#B42318;font-weight:700}
+#msg{min-height:22px;margin-top:10px;font-weight:600}
+footer{margin-top:36px;color:var(--muted);font-size:13px;white-space:pre-line}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><img src="icons/icon128.png" alt=""><h1>ANTRI RAMA</h1><button class="ghost" id="theme" type="button">Tema</button></div>
+  <p class="muted" id="info">Memuat...</p>
+
+  <h2>Pengaturan</h2>
+  <div class="card">
+    <label for="perPutaran">Jumlah naskah per putaran</label>
+    <select id="perPutaran"></select>
+    <label for="urut">Urutan antrean</label>
+    <select id="urut"><option value="masuk">Paling lama masuk antrean dulu</option><option value="tanggal">Tanggal naskah paling lama dulu</option></select>
+    <label for="jedaDetik">Jeda antarpermintaan</label>
+    <select id="jedaDetik"><option value="1">1 detik (sama dengan SRIKANDI)</option><option value="2">2 detik</option><option value="3">3 detik</option></select>
+    <div class="row"><button id="save" type="button">Simpan pengaturan</button></div>
+  </div>
+
+  <h2>NIK tersimpan</h2>
+  <div class="card">
+    <p class="muted">NIK disimpan di memori peramban saja dan hilang saat Chrome ditutup. Key Phrase tidak pernah disimpan.</p>
+    <p>NIK saat ini: <b id="nik">-</b></p>
+    <div class="row"><button class="ghost" id="clearNik" type="button">Hapus NIK sekarang</button></div>
+  </div>
+
+  <h2>Log putaran</h2>
+  <div class="card">
+    <p class="muted">Catatan setiap naskah yang diproses: waktu, nomor, hal, dan hasil tiap langkah. Tanpa NIK dan Key Phrase. Paling banyak 3.000 baris terakhir.</p>
+    <div class="row"><button id="csv" type="button">Unduh CSV</button><button class="danger" id="clearLog" type="button">Hapus log</button></div>
+    <div class="scroll"><table><thead><tr><th>Waktu</th><th>Put.</th><th>Nomor</th><th>Hal</th><th>Setuju</th><th>Nomor</th><th>TTE</th><th>Pesan</th></tr></thead><tbody id="log"></tbody></table></div>
+  </div>
+
+  <h2>Folder aplikasi</h2>
+  <div class="card"><p>Folder hasil ekstrak ANTRI RAMA adalah aplikasinya. Jangan dipindahkan atau dihapus selama ekstensi masih dipakai. Untuk memperbarui, timpa isi folder yang sama lalu klik muat ulang di <b>chrome://extensions</b>.</p></div>
+
+  <div id="msg" role="status"></div>
+  <footer>Dikembangkan oleh Deddy Eko Heryanto, S.T.
+JFT Pranata Komputer Ahli Muda
+Perpustakaan Poltekkes Kemenkes Palangka Raya
+Alat bantu pribadi. Bukan produk resmi ANRI maupun BSrE. Lisensi MIT.</footer>
+</main>
+<script src="core.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

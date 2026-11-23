@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANTRI RAMA: Setuju, Ambil Nomor, dan TTE sepuluh naskah dengan sekali Key Phrase</title>
+<meta name="description" content="Ekstensi Chrome untuk pejabat penandatangan SRIKANDI. Menjalankan Setuju, Ambil Nomor, dan tanda tangan elektronik hingga 10 naskah per putaran dengan sekali Key Phrase. Bukan produk ANRI maupun BSrE.">
+<link rel="icon" href="assets/antri-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('antri-tema');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#"><img src="assets/antri-icon.svg" alt="" width="34" height="34"><span>ANTRI RAMA</span></a>
+    <nav aria-label="Navigasi utama">
+      <a href="#cara">Cara kerja</a><a href="#pasang">Pasang</a><a href="#keamanan">Keamanan</a><a href="#pengaturan">Pengaturan</a><a href="#tanya">Tanya jawab</a>
+    </nav>
+    <button class="theme" id="tema" type="button" aria-label="Ganti tema terang atau gelap">Tema gelap</button>
+  </div>
+</header>
+
+<main id="isi">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="kicker">Ekstensi Chrome untuk pejabat penandatangan SRIKANDI</p>
+      <h1>Sepuluh naskah,<br>satu Key Phrase.</h1>
+      <p class="lead">ANTRI RAMA mengambil naskah dari daftar Tandatangan Naskah, mulai dari yang paling lama menunggu. Anda membaca dan mencentang. Setelah itu Setuju, Ambil Nomor, dan tanda tangan elektronik berjalan berurutan untuk seluruh putaran.</p>
+      <div class="cta">
+        <a class="btn primary" href="download/antri-rama-v1.0.0.zip" download>Unduh ANTRI RAMA 1.0.0</a>
+        <a class="btn" href="#pasang">Panduan pasang</a>
+      </div>
+      <p class="fine">Asisten Naskah Tandatangan Ringkas Instansi. Ramah Administrasi, Mudah Akuntabel. Gratis, lisensi MIT. Bukan produk resmi ANRI maupun BSrE.</p>
+    </div>
+    <div class="ticket" aria-label="Contoh satu putaran ANTRI RAMA">
+      <div class="ticket-head"><span>Putaran 1</span><span>Antrean dari yang paling lama</span></div>
+      <div class="ticket-num" aria-hidden="true">10</div>
+      <p class="ticket-sub">naskah dibaca dan dicentang pejabat</p>
+      <ol class="phases">
+        <li class="ph" style="--d:0"><b>Setuju</b><span>10 naskah</span></li>
+        <li class="ph" style="--d:1"><b>Ambil Nomor</b><span>nomor otomatis</span></li>
+        <li class="ph" style="--d:2"><b>TTE</b><span>sekali Key Phrase</span></li>
+      </ol>
+      <div class="ticket-foot">Berhenti total pada kegagalan pertama</div>
+    </div>
+  </section>
+
+  <section class="install-strip" aria-labelledby="ext-judul">
+    <div class="ext">
+      <p id="ext-judul"><b>Halaman ekstensi Chrome:</b> Chrome tidak mengizinkan situs membuka alamat ini lewat tautan. Salin, buka tab baru (Ctrl+T), tempel (Ctrl+V), lalu tekan Enter.</p>
+      <div class="ext-row"><code id="ext-url">chrome://extensions/</code><button class="copy" type="button" data-copy="chrome://extensions/">Salin alamat</button></div>
+    </div>
+    <div class="folder-warn" role="note"><b>Jangan pindahkan atau hapus folder ANTRI RAMA.</b> Folder hasil ekstrak adalah aplikasinya. Simpan di lokasi tetap pilihan Anda. Untuk memperbarui, timpa isi folder yang sama.</div>
+  </section>
+
+  <section id="cara" class="block">
+    <h2>Cara kerja satu putaran</h2>
+    <p class="intro">Alurnya sama dengan yang Anda kerjakan di SRIKANDI. Bedanya, setiap langkah dijalankan untuk seluruh putaran sekaligus, bukan diulang per naskah.</p>
+    <ol class="track">
+      <li><span class="n">1</span><h3>Penyaringan</h3><p>Daftar Tandatangan Naskah dibaca. Naskah yang belum giliran Anda disisihkan. Naskah bermasalah dipisahkan ke tab Perlu perhatian: tanggal lebih dari 180 hari, jabatan penandatangan berbeda dengan jabatan Anda sekarang, sifat Rahasia, atau dilindungi OTP.</p></li>
+      <li><span class="n">2</span><h3>Baca dan centang</h3><p>Paling banyak 10 naskah teratas tampil, urut dari yang paling lama masuk antrean. Kotak centang baru aktif setelah pratinjau PDF naskah itu dibuka. Tidak ada tombol pilih semua.</p></li>
+      <li><span class="n">3</span><h3>Setuju</h3><p>Status SETUJU dikirim untuk setiap naskah yang dicentang, sama dengan tombol Kirim di Form Penandatangan.</p></li>
+      <li><span class="n">4</span><h3>Ambil Nomor</h3><p>Untuk naskah yang Anda tandatangani pertama dan belum bernomor. Sebelumnya Anda menyetujui peringatan bahwa nomor otomatis tidak bisa diubah kembali, sekali untuk seluruh putaran.</p></li>
+      <li><span class="n">5</span><h3>TTE</h3><p>Key Phrase diketik sekali. Tanda tangan dikirim satu per satu dengan jeda, seperti fitur tanda tangan banyak naskah SRIKANDI. Key Phrase dilepas dari memori setelah putaran selesai.</p></li>
+      <li><span class="n">6</span><h3>Laporan dan log</h3><p>Hasil tiap langkah per naskah tampil di panel dan tercatat di log, tanpa NIK dan Key Phrase. Bila berhenti, putaran berikutnya melanjutkan tanpa mengulang langkah yang sudah berhasil.</p></li>
+    </ol>
+  </section>
+
+  <section class="block compare" aria-labelledby="banding">
+    <h2 id="banding">Dibanding cara yang sudah ada</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Langkah untuk 10 naskah</th><th scope="col">Manual per naskah</th><th scope="col">TTE banyak naskah SRIKANDI</th><th scope="col">ANTRI RAMA</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Membuka dan membaca naskah</th><td>10 kali buka detail</td><td>10 kali buka detail</td><td>Pratinjau di satu panel</td></tr>
+          <tr><th scope="row">Setuju</th><td>10 kali</td><td>10 kali, manual</td><td>Sekali jalan untuk semua yang dicentang</td></tr>
+          <tr><th scope="row">Ambil Nomor</th><td>10 kali dengan konfirmasi</td><td>10 kali, manual</td><td>Sekali konfirmasi, berjalan berurutan</td></tr>
+          <tr><th scope="row">Key Phrase</th><td>10 kali</td><td>1 kali</td><td>1 kali</td></tr>
+          <tr><th scope="row">Bila satu naskah gagal</th><td>Ditangani satu per satu</td><td>Tetap lanjut ke naskah berikutnya</td><td>Berhenti total, laporan per naskah</td></tr>
+          <tr><th scope="row">Naskah lama, beda jabatan, Rahasia, OTP</th><td>Tergantung ketelitian</td><td>Ikut terpilih bila dicentang</td><td>Dipisahkan otomatis, diproses manual</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="layar">
+    <h2 id="layar">Tampilan</h2>
+    <p class="intro">Semua gambar diambil dari uji di Chrome dengan SRIKANDI tiruan. Nama, nomor, dan NIK pada gambar adalah data contoh.</p>
+    <div class="gallery" role="tablist" aria-label="Pilih tampilan">
+      <button role="tab" aria-selected="true" data-img="assets/img/01-antrean.webp" data-cap="Antrean putaran: 10 naskah teratas, urut dari yang paling lama masuk antrean.">Antrean</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/02-pratinjau.webp" data-cap="Pratinjau PDF di dalam panel. Kotak centang aktif setelah pratinjau dibuka.">Pratinjau</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/03-jalankan.webp" data-cap="Jendela putaran: daftar naskah, peringatan nomor, NIK, Key Phrase, dan pernyataan persetujuan.">Jalankan</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/05-selesai.webp" data-cap="Laporan putaran: hasil Setuju, Ambil Nomor, dan TTE per naskah.">Laporan</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/06-perlu-perhatian.webp" data-cap="Perlu perhatian: naskah lama berjabatan lain dan naskah ber-OTP tidak ikut putaran.">Perlu perhatian</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/09-panel-gelap.webp" data-cap="Tema gelap panel.">Tema gelap</button>
+      <button role="tab" aria-selected="false" data-img="assets/img/07-opsi.webp" data-cap="Halaman opsi: pengaturan, NIK tersamar, dan log putaran yang bisa diunduh sebagai CSV.">Opsi dan log</button>
+    </div>
+    <figure class="shot"><img id="shot" src="assets/img/01-antrean.webp" alt="Antrean putaran ANTRI RAMA" width="760" height="900" loading="lazy"><figcaption id="cap">Antrean putaran: 10 naskah teratas, urut dari yang paling lama masuk antrean.</figcaption></figure>
+  </section>
+
+  <section id="pasang" class="block">
+    <h2>Pasang</h2>
+    <div class="two">
+      <ol class="steps">
+        <li><b>Unduh</b> berkas <a href="download/antri-rama-v1.0.0.zip" download>antri-rama-v1.0.0.zip</a>, lalu ekstrak ke lokasi tetap. Hasilnya folder <code>antri-rama</code>.</li>
+        <li><b>Buka</b> <code>chrome://extensions/</code> (salin dari kotak kuning di atas) dan nyalakan <b>Mode pengembang</b> di kanan atas.</li>
+        <li><b>Klik Muat yang belum dibuka</b> (Load unpacked), lalu pilih folder <code>antri-rama</code>.</li>
+        <li><b>Buka SRIKANDI</b>, masuk ke Naskah Keluar, Tandatangan Naskah, lalu tekan F5 sekali agar sesi terbaca.</li>
+        <li><b>Klik tombol ANTRI RAMA</b> di kanan bawah halaman.</li>
+      </ol>
+      <div class="box">
+        <h3>Satu ANTRI RAMA saja</h3>
+        <p>ID ekstensi ANTRI RAMA selalu <code>nkjjdpaiglgmfncekmmahfiabeacnadc</code>. Bila di halaman ekstensi muncul dua kartu ANTRI RAMA, hapus yang lain.</p>
+        <h3>Memperbarui</h3>
+        <p>Ekstrak versi baru ke folder yang sama, timpa isinya, lalu klik ikon muat ulang di kartu ANTRI RAMA dan tekan F5 di SRIKANDI.</p>
+        <div class="folder-warn small"><b>Folder jangan dipindah atau dihapus.</b> Bila terlanjur dipindah, muat ulang dari lokasi barunya lewat Muat yang belum dibuka.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keamanan" class="block">
+    <h2>Keamanan dan privasi</h2>
+    <div class="cards">
+      <article><h3>Key Phrase tidak disimpan</h3><p>Diketik sekali per putaran, hanya dipakai untuk permintaan TTE ke SRIKANDI, lalu dilepas dari memori. Tidak masuk log, penyimpanan, atau layanan lain.</p></article>
+      <article><h3>Terpisah dari halaman SRIKANDI</h3><p>Panel dan seluruh tindakan berjalan di ruang terisolasi ekstensi dengan shadow DOM tertutup. Skrip lain di halaman, termasuk skrip pihak ketiga, tidak dapat membaca isi panel.</p></article>
+      <article><h3>NIK hanya di memori</h3><p>NIK dibaca dari Form TTE yang tampil di layar Anda, atau diketik sekali. Disimpan di memori peramban dan hilang saat Chrome ditutup. Di layar selalu tersamar.</p></article>
+      <article><h3>Sesi tidak bisa ditukar</h3><p>Token sesi dibaca dari lalu lintas SRIKANDI di tab itu dan dikunci. Bila muncul token lain, ANTRI RAMA berhenti dan meminta halaman dimuat ulang.</p></article>
+      <article><h3>Daftar putih permintaan</h3><p>Hanya enam alamat SRIKANDI yang boleh dipanggil: daftar, detail, pratinjau, Setuju, Ambil Nomor, dan TTE. Pengiriman naskah tidak termasuk.</p></article>
+      <article><h3>Tanpa server perantara</h3><p>Tidak ada layanan AI, server pihak ketiga, atau analitik. Semua permintaan langsung ke SRIKANDI dari Chrome Anda.</p></article>
+    </div>
+  </section>
+
+  <section id="pengaturan" class="block">
+    <h2>Pengaturan</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Pengaturan</th><th scope="col">Pilihan</th><th scope="col">Keterangan</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jumlah naskah per putaran</th><td>1 sampai 10</td><td>Batas atas 10 dikunci. Putaran kecil memudahkan membaca dan membatasi dampak bila ada kegagalan.</td></tr>
+          <tr><th scope="row">Urutan antrean</th><td>Paling lama masuk antrean, atau tanggal naskah</td><td>Bawaan: waktu naskah masuk ke daftar Anda. Tanggal naskah bisa diisi mundur oleh konseptor.</td></tr>
+          <tr><th scope="row">Jeda antarpermintaan</th><td>1, 2, atau 3 detik</td><td>Bawaan 1 detik, sama dengan fitur tanda tangan banyak naskah SRIKANDI.</td></tr>
+          <tr><th scope="row">Filter jenis naskah</th><td>Di panel</td><td>Putaran hanya berisi satu jenis, misalnya Surat Keterangan, agar lebih cepat dibaca.</td></tr>
+          <tr><th scope="row">Tema</th><td>Terang atau gelap</td><td>Di panel dan halaman opsi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block limits" aria-labelledby="batas">
+    <h2 id="batas">Yang tidak dilakukan ANTRI RAMA</h2>
+    <ul>
+      <li>Tidak menyetujui naskah tanpa pratinjau dan centang dari Anda, dan tidak punya aturan setuju otomatis.</li>
+      <li>Tidak menyimpan Key Phrase dan tidak membaca penyimpanan terenkripsi SRIKANDI.</li>
+      <li>Tidak memproses naskah Rahasia, ber-OTP, lebih dari 180 hari, atau berjabatan penandatangan berbeda. Naskah itu diproses manual di SRIKANDI.</li>
+      <li>Tidak mengirim naskah. Pengiriman dan Perbarui PDF tetap di SRIKANDI.</li>
+      <li>Tidak dipakai untuk menandatangani atas nama orang lain. Satu akun, satu pemilik sertifikat, di depan komputernya sendiri.</li>
+    </ul>
+  </section>
+
+  <section id="tanya" class="block">
+    <h2>Tanya jawab</h2>
+    <div class="faq">
+      <details><summary>Apakah TTE lewat ANTRI RAMA sah?</summary><p>ANTRI RAMA mengirim permintaan yang sama dengan tombol di SRIKANDI, ke alamat yang sama, dengan NIK dan Key Phrase pemilik sertifikat. Tanda tangan tetap dibuat oleh sistem SRIKANDI dan BSrE. Pemakaian alat bantu ini sebaiknya mendapat persetujuan pimpinan dan unit kearsipan instansi Anda.</p></details>
+      <details><summary>Bedanya dengan tombol "Pilih Naskah untuk Ditandatangani"?</summary><p>Tombol itu menandatangani banyak naskah yang sudah disetujui dan bernomor. ANTRI RAMA juga menjalankan Setuju dan Ambil Nomor, menyaring naskah bermasalah, dan berhenti total bila ada yang gagal.</p></details>
+      <details><summary>Key Phrase saya salah ketik. Apa yang terjadi?</summary><p>Putaran berhenti di naskah pertama yang ditolak. Tidak ada percobaan ulang otomatis, sehingga sertifikat tidak terkunci karena percobaan berulang. Setuju dan nomor yang sudah berhasil tidak diulang di putaran berikutnya.</p></details>
+      <details><summary>Muncul pesan "Format nomor belum dibuat".</summary><p>Tata Usaha atau Sekretaris belum membuat format penomoran otomatis untuk jenis naskah itu. Putaran berhenti sebelum TTE. Minta format dibuat, lalu jalankan lagi.</p></details>
+      <details><summary>Kenapa sebagian naskah ada di Perlu perhatian?</summary><p>Karena tanggalnya lebih dari 180 hari, jabatan penandatangan di naskah berbeda dengan jabatan Anda pada naskah terbaru, sifatnya Rahasia, dilindungi OTP, atau datanya untuk Ambil Nomor tidak lengkap. Naskah ini perlu diputuskan langsung di SRIKANDI.</p></details>
+      <details><summary>Kenapa naskah ada di Menunggu giliran?</summary><p>Penandatangan sebelum Anda di urutan naskah itu belum selesai. Panel menyebut nama penandatangan yang masih ditunggu.</p></details>
+      <details><summary>NIK saya belum terbaca.</summary><p>Buka satu naskah di Tandatangan Naskah sampai Form TTE tampil, atau ketik NIK di jendela putaran. NIK hilang dari memori saat Chrome ditutup.</p></details>
+      <details><summary>Muncul pesan "Sesi berubah".</summary><p>Ada token sesi lain di tab yang sama, misalnya setelah login ulang. Tekan F5 di SRIKANDI, lalu buka panel lagi.</p></details>
+      <details><summary>Apakah ANTRI RAMA perlu internet selain ke SRIKANDI?</summary><p>Tidak. Ekstensi hanya berhubungan dengan srikandi.arsip.go.id, api.arsip.go.id, dan s3.arsip.go.id.</p></details>
+      <details><summary>Bisakah dipakai di Edge?</summary><p>Edge memakai mesin yang sama dengan Chrome dan mendukung pemasangan lewat edge://extensions, tetapi ANTRI RAMA baru diuji di Chrome.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div><b>ANTRI RAMA 1.0.0</b><br>Dikembangkan oleh Deddy Eko Heryanto, S.T.<br>JFT Pranata Komputer Ahli Muda<br>Perpustakaan Poltekkes Kemenkes Palangka Raya</div>
+    <div class="muted">Alat bantu pribadi untuk pemilik sertifikat elektronik. Bukan produk resmi ANRI maupun BSrE. Lisensi MIT. Huruf Plus Jakarta Sans, lisensi SIL OFL.</div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

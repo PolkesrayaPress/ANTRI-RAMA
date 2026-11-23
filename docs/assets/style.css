@@ -1,0 +1,124 @@
+@font-face{font-family:"Jakarta";src:url(fonts/plus-jakarta-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Jakarta";src:url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Jakarta";src:url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Jakarta";src:url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{
+  --teal:#047D78;--aqua:#00B9AD;--lime:#B2C204;--lime2:#CDDC29;--yel:#FFD21F;--black:#111111;
+  --bg:#F5FAF9;--surface:#FFFFFF;--ink:#0F2B29;--muted:#466562;--line:#D3E6E3;--accent:var(--teal);
+}
+[data-theme=dark]{--bg:#081514;--surface:#0F2422;--ink:#E7F5F3;--muted:#9EC4BF;--line:#21423F;--accent:var(--aqua)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Jakarta",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+code{font:600 .92em/1.4 "Jakarta",system-ui,sans-serif;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:9;background:var(--yel);color:var(--black);padding:8px 12px;border-radius:8px}
+:focus-visible{outline:3px solid var(--yel);outline-offset:3px}
+
+.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1160px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;letter-spacing:.3px}
+.nav nav{display:flex;gap:18px;flex:1;flex-wrap:wrap}
+.nav nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.nav nav a:hover{color:var(--accent)}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:600 14px "Jakarta",sans-serif;cursor:pointer}
+
+main{max-width:1160px;margin:0 auto;padding:0 22px}
+.hero{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;padding:72px 0 48px}
+.kicker{margin:0 0 14px;font-weight:700;color:var(--accent)}
+h1{font-size:clamp(42px,6.2vw,76px);line-height:1.02;letter-spacing:-2px;margin:0 0 22px;font-weight:800}
+.lead{font-size:19px;max-width:60ch;margin:0 0 26px;color:var(--ink)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.primary:hover{background:#036A66}
+.fine{font-size:14px;color:var(--muted);margin:18px 0 0;max-width:62ch}
+
+/* Tiket antrean: satu-satunya elemen bergerak di halaman */
+.ticket{position:relative;background:var(--teal);color:#fff;border-radius:22px;padding:22px 24px 0;box-shadow:0 24px 50px -24px rgba(4,125,120,.55)}
+.ticket::before,.ticket::after{content:"";position:absolute;top:168px;width:28px;height:28px;border-radius:50%;background:var(--bg)}
+.ticket::before{left:-14px}.ticket::after{right:-14px}
+.ticket-head{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;font-weight:600;opacity:.92}
+.ticket-num{font-weight:800;font-size:150px;line-height:.9;letter-spacing:-6px;color:var(--yel);margin-top:6px}
+.ticket-sub{margin:6px 0 0;font-weight:600;padding-bottom:22px;border-bottom:3px dashed rgba(255,255,255,.4)}
+.phases{list-style:none;margin:0;padding:18px 0;display:grid;gap:10px}
+.ph{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.1);border-radius:12px;padding:11px 14px}
+.ph b{font-size:17px}.ph span{font-size:13.5px;opacity:.9}
+.ticket-foot{margin:0 -24px;padding:12px 24px;background:var(--yel);color:var(--black);border-radius:0 0 22px 22px;font-weight:700;font-size:14.5px}
+@media (prefers-reduced-motion:no-preference){
+  .ph{animation:nyala .5s ease-out both;animation-delay:calc(.35s + var(--d) * .45s)}
+  @keyframes nyala{from{background:rgba(255,255,255,.02);transform:translateX(-10px);opacity:.3}to{background:rgba(255,255,255,.1)}}
+}
+
+.install-strip{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin:8px 0 24px}
+.ext{background:var(--yel);color:var(--black);border-radius:16px;padding:18px 20px}
+.ext p{margin:0 0 12px;font-size:15.5px}
+.ext-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ext code{background:#fff;border-color:#111;color:#111;font-size:17px;padding:6px 10px}
+.copy{background:var(--black);color:#fff;border:0;border-radius:10px;padding:10px 14px;font:700 14px "Jakarta",sans-serif;cursor:pointer}
+.folder-warn{border:2px solid var(--black);background:repeating-linear-gradient(-45deg,var(--yel) 0 14px,#FFE36B 14px 28px);color:var(--black);border-radius:16px;padding:16px 18px;font-size:15.5px}
+.folder-warn.small{font-size:14.5px;margin-top:16px;padding:12px 14px}
+
+.block{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.8px;line-height:1.15;margin:0 0 10px;font-weight:800}
+h2::after{content:"";display:block;width:56px;height:6px;border-radius:3px;background:var(--yel);margin-top:12px}
+.intro{color:var(--muted);max-width:70ch;margin:0 0 28px}
+h3{margin:0 0 6px;font-size:19px}
+
+.track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:x}
+.track li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 20px 16px;position:relative}
+.track li:nth-child(3),.track li:nth-child(4),.track li:nth-child(5){border-top:5px solid var(--lime)}
+.track .n{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--teal);color:#fff;font-weight:800;margin-bottom:12px}
+.track p{margin:0;color:var(--muted);font-size:15.5px}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:680px}
+th,td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{font-size:14px;color:var(--muted);font-weight:700}
+tbody th{font-weight:700}
+.compare td:last-child{font-weight:700;color:var(--accent)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+
+.gallery{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.gallery button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14.5px "Jakarta",sans-serif;cursor:pointer}
+.gallery button[aria-selected=true]{background:var(--yel);border-color:var(--yel);color:var(--black)}
+.shot{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,560px) 1fr;gap:22px;align-items:start}
+.shot img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+.shot figcaption{font-size:16px;color:var(--muted);padding-top:6px;max-width:40ch}
+
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+.steps{margin:0;padding-left:22px}
+.steps li{margin:0 0 14px;padding-left:6px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.box p{margin:0 0 14px;color:var(--muted);font-size:15.5px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cards article{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.cards article:first-child{background:var(--teal);color:#fff;border-color:var(--teal)}
+.cards article:first-child p{color:#E3F7F5}
+.cards p{margin:0;color:var(--muted);font-size:15.5px}
+
+.limits ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;max-width:880px}
+.limits li{padding:12px 16px 12px 46px;background:var(--surface);border:1px solid var(--line);border-radius:12px;position:relative}
+.limits li::before{content:"";position:absolute;left:16px;top:20px;width:16px;height:4px;border-radius:2px;background:#B42318}
+
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:0 18px}
+.faq summary{cursor:pointer;font-weight:700;padding:15px 0}
+.faq details p{margin:0 0 16px;color:var(--muted)}
+
+.foot{border-top:4px solid var(--yel);background:var(--surface);margin-top:30px}
+.foot-in{max-width:1160px;margin:0 auto;padding:28px 22px;display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:15px}
+.muted{color:var(--muted)}
+
+@media (max-width:900px){
+  .hero,.install-strip,.two,.shot{grid-template-columns:1fr}
+  .hero{padding-top:44px;gap:34px}
+  .track,.cards{grid-template-columns:1fr 1fr}
+  .nav nav{display:none}
+  .foot-in{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .track,.cards{grid-template-columns:1fr}
+  .ticket-num{font-size:120px}
+  body{font-size:16px}
+}
