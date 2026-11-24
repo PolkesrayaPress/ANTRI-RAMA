@@ -1,4 +1,4 @@
-/* ANTRI RAMA v1.0.0 - service worker
+/* ANTRI RAMA v1.0.1 - service worker
    Tugas: membaca token sesi dan alamat daftar dari lalu lintas SRIKANDI (tanpa menyentuh halaman),
    menyimpan pengaturan dan log (tanpa NIK dan Key Phrase), serta menyimpan NIK di memori sesi peramban.
    Key Phrase tidak pernah dikirim ke sini. */

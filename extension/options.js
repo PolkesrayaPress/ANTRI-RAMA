@@ -1,4 +1,4 @@
-/* ANTRI RAMA v1.0.0 - halaman pengaturan dan log */
+/* ANTRI RAMA v1.0.1 - halaman pengaturan dan log */
 (function () {
   'use strict';
   const C = window.ANTRI_CORE;

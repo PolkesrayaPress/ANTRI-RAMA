@@ -4,7 +4,7 @@
 
 Ekstensi Chrome untuk pejabat penandatangan SRIKANDI. Menjalankan **Setuju, Ambil Nomor, dan tanda tangan elektronik (TTE)** hingga 10 naskah per putaran dengan **sekali Key Phrase**. Alat bantu pribadi, bukan produk resmi ANRI maupun BSrE.
 
-Situs dan panduan: folder `docs/` (GitHub Pages). Unduhan: [`docs/download/antri-rama-v1.0.0.zip`](docs/download/antri-rama-v1.0.0.zip).
+Situs dan panduan: folder `docs/` (GitHub Pages). Unduhan: [`docs/download/antri-rama-v1.0.1.zip`](docs/download/antri-rama-v1.0.1.zip).
 
 > **Jangan pindahkan atau hapus folder ANTRI RAMA** setelah dipasang. Folder hasil ekstrak adalah aplikasinya. Untuk memperbarui, timpa isi folder yang sama.
 
@@ -20,7 +20,7 @@ Situs dan panduan: folder `docs/` (GitHub Pages). Unduhan: [`docs/download/antri
 
 ## Pasang
 
-1. Unduh dan ekstrak `antri-rama-v1.0.0.zip` ke lokasi tetap.
+1. Unduh dan ekstrak `antri-rama-v1.0.1.zip` ke lokasi tetap.
 2. Buka `chrome://extensions/`, nyalakan Mode pengembang.
 3. Klik **Muat yang belum dibuka** dan pilih folder `antri-rama`.
 4. Buka SRIKANDI, Naskah Keluar, Tandatangan Naskah, tekan F5.
@@ -67,11 +67,12 @@ Belum dilakukan: Perbarui PDF dan kirim naskah (tetap di SRIKANDI), pemeriksaan 
 
 ## Pengujian
 
-| Rangkaian | Berkas | Isi | Hasil 1.0.0 |
+| Rangkaian | Berkas | Isi | Hasil 1.0.1 |
 |---|---|---|---|
 | Inti | `tests/core.test.js` | Daftar putih, penyaringan, antrean, putaran, CSV | 32 lulus |
 | Mesin putaran | `tests/run.test.js` | Urutan fase, Key Phrase salah, nomor 404, galat jaringan, berhenti, melanjutkan | 14 lulus |
 | Chrome sungguhan | `tests/e2e/e2e.js` + `fakesrk.py` | SRIKANDI tiruan lewat HTTPS lokal: panel, pratinjau, putaran gagal dan berhasil, sesi berubah, NIK, opsi | 28 lulus |
+| Bersama JALA | `tests/e2e/tumpuk.js` | JALA Arsip dan ANTRI RAMA dipasang bersamaan: tombol tidak bertumpuk | 4 lulus |
 
 Uji Chrome memakai salinan ekstensi yang shadow DOM-nya dibuka agar bisa diklik otomatis; selebihnya identik. Sertifikat uji dibuat sendiri (`openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 30 -subj /CN=uji`).
 
@@ -79,6 +80,7 @@ Uji Chrome memakai salinan ekstensi yang shadow DOM-nya dibuka agar bisa diklik 
 
 ## Riwayat versi
 
+- **1.0.1** (23 November 2026): tombol ANTRI RAMA otomatis naik di atas tombol JALA Arsip bila keduanya terpasang, sehingga tidak bertumpuk.
 - **1.0.0** (23 November 2026): rilis pertama.
 
 ## Pengembang

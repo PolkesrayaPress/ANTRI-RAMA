@@ -1,4 +1,4 @@
-# ANTRI RAMA 1.0.0
+# ANTRI RAMA 1.0.1
 
 **A**sisten **N**askah **T**anda**t**angan **R**ingkas **I**nstansi. **R**amah **A**dministrasi, **M**udah **A**kuntabel.
 

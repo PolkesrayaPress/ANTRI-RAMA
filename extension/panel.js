@@ -1,4 +1,4 @@
-/* ANTRI RAMA v1.0.0 - panel dan mesin putaran.
+/* ANTRI RAMA v1.0.1 - panel dan mesin putaran.
    Berjalan di ruang terisolasi ekstensi (bukan konteks halaman SRIKANDI). Key Phrase hanya ada di variabel
    lokal selama satu putaran berjalan, tidak pernah dikirim ke service worker, disimpan, atau dicatat. */
 (function () {
@@ -306,12 +306,29 @@
     return box;
   }
 
+  // Bila tombol JALA Arsip (#srk-fab) ada di pojok yang sama, tombol ANTRI RAMA naik ke atasnya.
+  function placeFab() {
+    const fab = wrap.querySelector('.fab');
+    if (!fab) return;
+    const jala = document.getElementById('srk-fab');
+    let bottom = 18;
+    if (jala && jala.isConnected) {
+      const r = jala.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) bottom = Math.max(18, Math.round(window.innerHeight - r.top) + 10);
+    }
+    const v = bottom + 'px';
+    if (fab.style.bottom !== v) fab.style.bottom = v;
+  }
+  setInterval(placeFab, 1500);
+  window.addEventListener('resize', placeFab);
+
   function render() {
     applyTheme();
     wrap.textContent = '';
     const nLolos = parts ? parts.lolos.length : null;
     if (!open) {
       wrap.append(el('button', { class: 'fab', type: 'button', 'aria-label': 'Buka ANTRI RAMA', onclick: () => { open = true; render(); if (!parts) loadQueue(); } }, 'ANTRI RAMA', nLolos != null ? el('span', { class: 'n' }, String(nLolos)) : null));
+      placeFab();
       return;
     }
     const dark = wrap.classList.contains('dark');

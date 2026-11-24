@@ -1,10 +1,10 @@
-/* ANTRI RAMA v1.0.0
+/* ANTRI RAMA v1.0.1
    Asisten Naskah Tandatangan Ringkas Instansi, Ramah Administrasi Mudah Akuntabel.
    Fungsi murni tanpa akses jaringan. Dipakai di halaman (agent.js), service worker, dan uji Node. */
 (function (root) {
   'use strict';
 
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.1';
   const API_HOST = 'api.arsip.go.id';
   const S3_HOST = 's3.arsip.go.id';
   const BUCKET = 'srikandi-prod';
